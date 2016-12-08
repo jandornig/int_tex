@@ -38,12 +38,14 @@ function createTexture(){
             
       tile(x,y)
       }
-            
-      /*else{
+       
+      //problemarea open
+      else{
           noStroke()
           fill(255,50)
           ellipse(x,y,30,30)
-      }*/
+      }
+      //promblemarea close
       
       if(mouseX-pmouseX<30 && mouseY-pmouseY<30){
           range=range+0.01
