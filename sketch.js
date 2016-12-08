@@ -40,12 +40,11 @@ function createTexture(){
           ellipse(x,y,30,30)
       }
       
-      /*if(mouseX-pmouseX<30 && mouseY-pmouseY<30){
-          range=range+0.01
-        }
-      else{
-        range=50
-      }*/
+         else{
+          noStroke()
+          fill(255,0,0,50)
+          ellipse(x,y,30,30)
+      }
       
     }
   }
