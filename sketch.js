@@ -7,16 +7,13 @@ var updateEvery= 200
 function setup() {
 createCanvas(800,600)
 ellipseMode(CENTER)
+rectMode(CENTER)
 frameRate(30)
 }
 
 function draw() {
   
   var currentTime = millis()
-  
-  if (mouseIsPressed) {
-    background(255)
-  }
   
   if(currentTime-lastTime>updateEvery){
     createTexture()
@@ -25,21 +22,31 @@ function draw() {
 }
 
 function createTexture(){
-  stroke(random(256),random(256),random(256))
-  fill(0,0,255,50)
-  ellipse(mouseX,mouseY,50)
-
+  stroke(random(256),random(256),random(256))  
+  
   for(var x = 30; x<windowWidth-30; x+=30) {
     for (var y= 30; y<windowHeight-30; y+=30){
           
       if(mouseX>x-range && mouseX<x+range && mouseY>y-range && mouseY<y+range){
-            
-      tile(x,y)
+        if (mouseIsPressed) {
+        push()
+        noStroke()
+          fill(255)
+          rect(x,y,30,30)
+        pop()
+        }
+        
+        tile(x,y)
+        
+        
+        
       }
       else{
-          noStroke()
-          fill(255,0,0,50)
-          ellipse(x,y,30,30)
+        push()
+        noStroke()
+          fill(255,50)
+          rect(x,y,30,30)
+        pop()
       }
       
       if(mouseX-pmouseX<30 && mouseY-pmouseY<30){
