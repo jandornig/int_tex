@@ -3,8 +3,6 @@ var range = 50
 var lastTime= 0
 var updateEvery= 200
 var currentTime = 0
-var x = 0
-var y = 0
 
 function setup() {
 createCanvas(800,600)
@@ -21,31 +19,26 @@ function draw() {
   }
   
   if(currentTime-lastTime>updateEvery){
-    createTexture(x,y)
+    createTexture()
     lastTime=millis()
   }
 }
 
 function createTexture(){
   stroke(random(256),random(256),random(256))
-  
-  
-  
-  for(x = 30; x<windowWidth-30; x+=30) {
-    for (y= 30; y<windowHeight-30; y+=30){
+
+  for(var x = 30; x<windowWidth-30; x+=30) {
+    for (var y= 30; y<windowHeight-30; y+=30){
           
       if(mouseX>x-range && mouseX<x+range && mouseY>y-range && mouseY<y+range){
             
       tile(x,y)
       }
-       
-      //problemarea open
       else{
           noStroke()
           fill(255,50)
           ellipse(x,y,30,30)
       }
-      //promblemarea close
       
       if(mouseX-pmouseX<30 && mouseY-pmouseY<30){
           range=range+0.01
