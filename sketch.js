@@ -2,7 +2,7 @@ var c = 0
 var range = 50
 var lastTime= 0
 var updateEvery= 200
-var currentTime = 0
+
 
 function setup() {
 createCanvas(800,600)
@@ -12,7 +12,7 @@ frameRate(30)
 
 function draw() {
   
-  currentTime = millis()
+  var currentTime = millis()
   
   if (mouseIsPressed) {
     background(255)
@@ -20,12 +20,14 @@ function draw() {
   
   if(currentTime-lastTime>updateEvery){
     createTexture()
-    lastTime=millis()
+    lastTime=currentTime
   }
 }
 
 function createTexture(){
   stroke(random(256),random(256),random(256))
+  fill(0,0,255,50)
+  ellipse(mouseX,mouseY,50)
 
   for(var x = 30; x<windowWidth-30; x+=30) {
     for (var y= 30; y<windowHeight-30; y+=30){
@@ -50,7 +52,6 @@ function createTexture(){
     }
   }
 }
-
 
 function tile(x,y){
   noFill()
